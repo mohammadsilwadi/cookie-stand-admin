@@ -12,4 +12,4 @@ Have a ```<main>``` component containing ```<form>``` and a placeholder componen
 
 Have a ```<footer>``` component that matches spec.
 
-[pr]()
+[pr](https://github.com/mohammadsilwadi/cookie-stand-admin/pull/1)
