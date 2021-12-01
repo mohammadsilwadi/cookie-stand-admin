@@ -5,21 +5,21 @@ export default function LoginForm() {
     let loginHudler=(e)=>{
         e.preventDefault()
        let user={
-      username:e.target.username.value,
-      password:e.target.password.value,
+       username:e.target.username.value,
+       password:e.target.password.value,
         }
         login(user.username,user.password)
       }
   return (
-    <div className="w-3/5 p-10 m-auto bg-green-200 rounded-lg">
-      <form  onSubmit={loginHudler} className='flex flex-col justify-center gap-3' >
+    <div className="w-3/5 m-48 p-">
+      <form  onSubmit={loginHudler} className='p-4 m-8 bg-green-300 rounded-md' >
         <label className="content-center ">
           USERNAME :{" "}
         </label>
         <input
           name="username"
           placeholder=" username"
-          className="w-4/5 p-1 ml-24 rounded-xl"
+          className="w-2/3 m-3 bg-gray-100"
           min="0"
         ></input>
         <br />
@@ -30,10 +30,10 @@ export default function LoginForm() {
           name="password"
           placeholder=" password"
           type="password"
-          className="w-4/5 p-1 ml-24 rounded-xl"
+          className="w-2/3 m-3 bg-gray-100"
           min="0"
         ></input>
-        <button className="w-4/5 p-4 ml-24 bg-green-600 rounded-lg "type='submit' > Sign in</button>
+        <button className="p-1 px-2 m-3 bg-green-500 text-black-50"type='submit' > Sign in</button>
       </form>
     </div>
   );
