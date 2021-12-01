@@ -11,7 +11,7 @@ export default function LoginForm() {
         login(user.username,user.password)
       }
   return (
-    <div className="w-3/5 m-48 p-">
+    <div className="w-3/5 m-8 ">
       <form  onSubmit={loginHudler} className='p-4 m-8 bg-green-300 rounded-md' >
         <label className="content-center ">
           USERNAME :{" "}
