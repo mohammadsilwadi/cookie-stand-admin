@@ -6,12 +6,12 @@ export default function Main() {
   const [cookieStand, set_data] =useState([]);
   let ubdateHandler=(save_data)=>{
     set_data(cookieStand => [...cookieStand, save_data])
-
   }
    return (
         <main className="items-center justify-center px-20 text-center ">
         <CreateForm ubdateHandler={ubdateHandler}/>
         {cookieStand && <ReportTable data={cookieStand} hours={hours} />}
+        
       </main>
     )
 }
