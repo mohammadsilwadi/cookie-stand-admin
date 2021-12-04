@@ -1,46 +1,58 @@
 
-export default function CreateForm(props){
-    const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-    function Handler(event) {
+import useResource from '../hooks/useResource'
+
+export default function FormStandHeader({setCookie}) {
+
+    const {  createResource } = useResource();
+
+    function onCreate (event) {
         event.preventDefault();
-        const save_data = {
-          location: event.target.location.value,
-          min_customers: event.target.minimum.value,
-          max_customers: event.target.Maximum.value,
-          avg_cookies: event.target.avgCustomers.value,
-          sales_per_hour:[48, 42, 30, 24, 42, 24, 36, 42, 42, 48, 36, 42, 24, 36,516],
+        let array=[]
+        for (let index = 0; index < 14; index++) {
+           let value= Math.floor((Math.random() * (event.target.Maximum.value - event.target.minimum.value) ))
+           array.push(Number(value)+ Number(event.target.minimum.value))
         }
-        
-        props.ubdateHandler(save_data)
-
-      }
-      return(
-    <form onSubmit={Handler} className="m-8 p-4 bg-green-300 rounded-md" >
-          <h2 className="text-center text-2xl">Cookie Stand Admin  </h2>
-          <div className="w-100">
-            <label className=" w-1/3"> Location </label>
-            <input className="bg-gray-100 m-3 w-2/3" name="location" type="text" />
-          </div>
+        const obj = {
+                "location": event.target.location.value,
+                "description": "cookie sales report ",
+                "hourly_sales": [
+                    10
+                ],
+                "minimum_customers_per_hour": event.target.minimum.value,
+                "maximum_customers_per_hour": event.target.Maximum.value,
+                "average_cookies_per_sale":event.target.avgCustomers.value,
+                'hourly_sales':array,
+            
+        }
+        createResource(obj)
+    }
+    
+    return (
+      <form onSubmit={onCreate} className="p-4 m-8 bg-green-300 rounded-md" >
+         <div className="flex items-center justify-center py-8">
+                <div className="w-full py-4 text-center mx-14">
+                    <label className="">ADD LOCATION</label>
+                    <input name="location" placeholder="Cookie Stand Location" className="w-full p-2 font-medium" required />
+                </div>
+                <button type="submit" className="w-2/3 py-6 font-bold text-white bg-green-500 border-b-4 border-green-700 hover:bg-green-400 hover:border-green-500 mr-14">CREATE STAND</button>
+            </div>
           <div className="flex items-stretch">
-            <div className="m-3 p-4 ">
-              <label className=" m-3 "> Minimum Customer pre Hour  </label>
-              <input className="bg-gray-100 m-3 w-2/3" name="minimum" type="number" />
+            <div className="p-4 m-3 ">
+              <label className="m-3 "> Minimum Customer pre Hour  </label>
+              <input className="w-2/3 m-3 bg-gray-100" name="minimum" type="number" required/>
             </div>
 
-            <div className="m-3 p-4 ">
-              <label className=" m-3 "> Maximum Customer pre Hour </label>
-              <input className="bg-gray-100 m-3 w-2/3" name="Maximum" type="number" />
+            <div className="p-4 m-3 ">
+              <label className="m-3 "> Maximum Customer pre Hour </label>
+              <input className="w-2/3 m-3 bg-gray-100" name="Maximum" type="number"required/>
             </div>
-            <div className="m-3 p-4 ">
-              <label className=" m-3 "> Average Cookies pre sale  </label>
-              <input className="bg-gray-100 m-3 w-2/3" name="avgCustomers" type="number" />
+            <div className="p-4 m-3 ">
+              <label className="m-3 "> Average Cookies pre sale  </label>
+              <input className="w-2/3 m-3 bg-gray-100" name="avgCustomers" type="number" required />
             </div>
 
-            <button class="bg-green-500 hover:bg-green-400 text-white font-bold h-12 px-4 border-b-4 border-green-700 hover:border-green-500 rounded">
-              Create
-            </button>
+            
           </div>
         </form>
-      )
+    )
 }
-      
