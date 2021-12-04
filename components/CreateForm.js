@@ -1,6 +1,7 @@
 
 import useResource from '../hooks/useResource'
 
+
 export default function FormStandHeader({setCookie}) {
 
     const {  createResource } = useResource();
@@ -15,14 +16,10 @@ export default function FormStandHeader({setCookie}) {
         const obj = {
                 "location": event.target.location.value,
                 "description": "cookie sales report ",
-                "hourly_sales": [
-                    10
-                ],
                 "minimum_customers_per_hour": event.target.minimum.value,
                 "maximum_customers_per_hour": event.target.Maximum.value,
                 "average_cookies_per_sale":event.target.avgCustomers.value,
                 'hourly_sales':array,
-            
         }
         createResource(obj)
     }
